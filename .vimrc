@@ -23,6 +23,7 @@ filetype plugin indent on
 "-------------------------------------------------
 """"辞書ファイル
 autocmd BufRead *.php\|*.ctp\|*.tpl :set dictionary=~/.vim/dict/php.dict filetype=php
+autocmd BufRead *.php\|*.ctp\|*.tpl\|*.htm\|*.html\|*.css :set dictionary=~/.vim/dict/css.dict filetype=css
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
