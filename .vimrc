@@ -18,6 +18,9 @@ call neobundle#end()
 
 filetype plugin indent on
 
+"行番号を表示
+set number
+
 "-------------------------------------------------
 """" neocomplcache設定
 "-------------------------------------------------
