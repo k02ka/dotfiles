@@ -14,6 +14,15 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'scrooloose/nerdtree'
 
+" 補完用言語別辞書
+NeoBundle 'nishigori/vim-php-dictionary'
+
+" 任意の文字で選択範囲を囲うプラグイン
+NeoBundle 'tpope/vim-surround'
+
+" HTML,CSS入力支援プラグイン
+NeoBundle 'mattn/emmet-vim'
+
 call neobundle#end()
 
 filetype plugin indent on
@@ -22,8 +31,8 @@ filetype plugin indent on
 set number
 
 " コードのカラー設定
-highlight Pmenu ctermbg=4
-highlight PmenuSel ctermbg=1
+highlight Pmenu     ctermbg=4
+highlight PmenuSel  ctermbg=1
 highlight PMenuSbar ctermbg=4
 
 "-------------------------------------------------
@@ -46,17 +55,17 @@ let g:neocomplcache_skip_input_time = '0.5'
 " neosnippet設定
 "-------------------------------------------------
 """ Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-k><Plug>(neosnippet_expand_or_jump)
+smap <C-k><Plug>(neosnippet_expand_or_jump)
+xmap <C-k><Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-			\ "\<Plug>(neosnippet_expand_or_jump)"
-			\: pumvisible() ? "\<C-n>" : "\<TAB>"
+	\ "\<Plug>(neosnippet_expand_or_jump)"
+	\: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-			\ "\<Plug>(neosnippet_expand_or_jump)"
-			\: "\<TAB>"
+	\ "\<Plug>(neosnippet_expand_or_jump)"
+	\: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
