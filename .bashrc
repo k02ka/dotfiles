@@ -11,9 +11,7 @@ fi
 function parse_git_branch {
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
-function precmd() {
-	PROMPT="\h@\u:\W\$(parse_git_branch) \$ "
-}
+
 function proml {
 	PS1="[MEGAMI] [\u@$PS_HOSTNAME \w]\[\e[1;31m\]\$(parse_git_branch)\[\e[00m\]\$ "
 	#PS1="\h@\u:\W\[\e[1;31m\]\$(parse_git_branch)\[\e[00m\] \$ "
