@@ -38,9 +38,9 @@ highlight PMenuSbar ctermbg=4
 "-------------------------------------------------
 " neocomplcache設定
 "-------------------------------------------------
-""""辞書ファイル
-autocmd BufRead *.php\|*.ctp\|*.tpl :set dictionary=~/.vim/dict/php.dict filetype=php
-autocmd BufRead *.php\|*.ctp\|*.tpl\|*.htm\|*.html\|*.css :set dictionary=~/.vim/dict/css.dict filetype=css
+" 辞書ファイル
+set dictionary=~/.vim/bundle/vim-php-dictionary/dict/PHP.dict
+autocmd FileType php,tpl :set dictionary=~/.vim/bundle/vim-php-dictionary/dict/PHP.dict
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
@@ -55,9 +55,9 @@ let g:neocomplcache_skip_input_time = '0.5'
 " neosnippet設定
 "-------------------------------------------------
 """ Plugin key-mappings.
-imap <C-k><Plug>(neosnippet_expand_or_jump)
-smap <C-k><Plug>(neosnippet_expand_or_jump)
-xmap <C-k><Plug>(neosnippet_expand_target)
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
