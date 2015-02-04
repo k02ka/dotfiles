@@ -21,8 +21,13 @@ filetype plugin indent on
 "行番号を表示
 set number
 
+" コードのカラー設定
+highlight Pmenu ctermbg=4
+highlight PmenuSel ctermbg=1
+highlight PMenuSbar ctermbg=4
+
 "-------------------------------------------------
-"""" neocomplcache設定
+" neocomplcache設定
 "-------------------------------------------------
 """"辞書ファイル
 autocmd BufRead *.php\|*.ctp\|*.tpl :set dictionary=~/.vim/dict/php.dict filetype=php
@@ -38,7 +43,7 @@ let g:neocomplcache_enable_skip_completion = 1
 let g:neocomplcache_skip_input_time = '0.5'
 
 "-------------------------------------------------
-"""" neosnippet設定
+" neosnippet設定
 "-------------------------------------------------
 """ Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
