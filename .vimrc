@@ -25,14 +25,20 @@ NeoBundle 'mattn/emmet-vim'
 
 call neobundle#end()
 
-
-
 filetype plugin indent on
 
 "行番号を表示
 set number
 " delete keyの挙動を設定
 set backspace=start,eol,indent
+" インデントの設定
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+"タブ、空白、改行の可視化
+set list
+set listchars=tab:>.,trail:_,extends:>,precedes:<,nbsp:%
 
 " コードのカラー設定
 highlight Pmenu     ctermbg=4
@@ -65,16 +71,28 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-	\ "\<Plug>(neosnippet_expand_or_jump)"
-	\: pumvisible() ? "\<C-n>" : "\<TAB>"
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-	\ "\<Plug>(neosnippet_expand_or_jump)"
-	\: "\<TAB>"
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
-	set conceallevel=2 concealcursor=i
+    set conceallevel=2 concealcursor=i
 endif
 
+" 全角スペースをハイライト表示
+function! ZenkakuSpace()
+    highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+endfunction
 
+if has('syntax')
+    augroup ZenkakuSpace
+        autocmd!
+        autocmd ColorScheme       * call ZenkakuSpace()
+        autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+    augroup END
+    call ZenkakuSpace()
+endif
 
