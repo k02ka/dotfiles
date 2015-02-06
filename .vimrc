@@ -23,6 +23,12 @@ NeoBundle 'tpope/vim-surround'
 " HTML,CSS入力支援プラグイン
 NeoBundle 'mattn/emmet-vim'
 
+" NERDTreeを設定
+NeoBundle 'scrooloose/nerdtree'
+
+" カッコを自動的に閉じる
+NeoBundle 'Townk/vim-autoclose'
+
 call neobundle#end()
 
 filetype plugin indent on
@@ -96,3 +102,13 @@ if has('syntax')
     call ZenkakuSpace()
 endif
 
+nnoremap <silent><C-e> :NERDTree<CR>
+
+
+" 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
+" 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
+NeoBundleCheck
+
+"-------------------------
+" End Neobundle Settings.
+"-------------------------
