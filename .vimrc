@@ -33,6 +33,8 @@ call neobundle#end()
 
 filetype plugin indent on
 
+"色を付ける
+syntax on
 "行番号を表示
 set number
 " delete keyの挙動を設定
