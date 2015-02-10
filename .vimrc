@@ -38,10 +38,10 @@ set number
 " delete keyの挙動を設定
 set backspace=start,eol,indent
 " インデントの設定
-set autoindent
 set tabstop=4
-set shiftwidth=4
+set autoindent
 set expandtab
+set shiftwidth=4
 "タブ、空白、改行の可視化
 set list
 set listchars=tab:>.,trail:_,extends:>,precedes:<,nbsp:%

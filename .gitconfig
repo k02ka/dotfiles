@@ -8,3 +8,7 @@
 	diff   = auto
 	status = auto
 	branch = auto
+	ui = auto
+[user]
+	email = koji.kashiwabara@gmodecorp.com
+	name = Koji Kashiwabara
