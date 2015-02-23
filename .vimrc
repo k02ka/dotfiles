@@ -106,6 +106,12 @@ endif
 
 nnoremap <silent><C-e> :NERDTree<CR>
 
+" キーマップ
+" Ctl + cでスペニットの補完ウィンドウを閉じる
+inoremap <expr><C-c> neocomplcache#smart_close_popup()."\<C-c>"
+" imap <C-s> <Esc>:w<CR>
+" imap <C-q> <Esc>:q<CR>
+
 
 " 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
 " 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
