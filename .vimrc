@@ -109,7 +109,10 @@ nnoremap <silent><C-e> :NERDTree<CR>
 " キーマップ
 " Ctl + cでスペニットの補完ウィンドウを閉じる
 inoremap <expr><C-c> neocomplcache#smart_close_popup()."\<C-c>"
-" imap <C-s> <Esc>:w<CR>
+" Ctl + wでスペニットの補完ウィンドを閉じて保存
+inoremap <expr><C-w> neocomplcache#smart_close_popup()."<Esc>:w<CR>\<C-w>"
+" スペース + wで保存
+nnoremap <silent> <Space>w :<C-u>update<CR>
 " imap <C-q> <Esc>:q<CR>
 
 
