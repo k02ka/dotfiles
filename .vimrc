@@ -123,7 +123,9 @@ if 1
     " 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
     " 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
     NeoBundleCheck
-
+    set encoding=utf-8
+    set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
+    set ff=unix
     "-------------------------
     " End Neobundle Settings.
     "-------------------------

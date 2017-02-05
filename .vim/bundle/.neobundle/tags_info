@@ -1,7 +1,8 @@
+emmet-vim
 neobundle.vim
-neocomplcache
-neosnippet
-neosnippet-snippets
 nerdtree
 syntastic
+vim-autoclose
+vim-php-dictionary
+vim-surround
 vimproc
