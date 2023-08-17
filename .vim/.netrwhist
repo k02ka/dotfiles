@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/vol2/www/s15.dev.megamiengage.net/bin'
-let g:netrw_dirhist_2='/vol2/www/s15.dev.megamiengage.net/public_html/debug/kashiwabara'
-let g:netrw_dirhist_3='/vol2/www/s15.dev.megamiengage.net/bin/Maker'
-let g:netrw_dirhist_4='/vol2/www/s15.dev.megamiengage.net/tpl/card'
-let g:netrw_dirhist_5='/vol2/www/s18.dev.megamiengage.net/bin/private'
