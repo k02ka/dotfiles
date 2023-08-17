@@ -3,8 +3,10 @@ if 1
     filetype off
 
     if has('vim_starting')
-      set runtimepath+=~/.vim/bundle/neobundle.vim
-      call neobundle#begin(expand('~/.vim/bundle/'))
+        " NeoBundleの設定
+        set runtimepath+=~/.vim/bundle/neobundle.vim
+        call neobundle#begin(expand('~/.vim/bundle/'))
+
     endif
 
     NeoBundle 'Shougo/neobundle.vim'
@@ -13,7 +15,6 @@ if 1
     "NeoBundle 'Shougo/neosnippet'
     "NeoBundle 'Shougo/neosnippet-snippets'
     NeoBundle 'scrooloose/syntastic.git'
-    NeoBundle 'scrooloose/nerdtree'
 
     " 補完用言語別辞書
     NeoBundle 'nishigori/vim-php-dictionary'
@@ -22,17 +23,18 @@ if 1
     NeoBundle 'tpope/vim-surround'
 
     " HTML,CSS入力支援プラグイン
-    NeoBundle 'mattn/emmet-vim'
-
-    " NERDTreeを設定
-    NeoBundle 'scrooloose/nerdtree'
+    " NeoBundle 'mattn/emmet-vim'
 
     " カッコを自動的に閉じる
     NeoBundle 'Townk/vim-autoclose'
 
     call neobundle#end()
 
-    filetype plugin indent on
+    " 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
+    " 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
+    NeoBundleCheck
+
+    " filetype plugin indent on
 
     "色を付ける
     syntax on
@@ -48,7 +50,7 @@ if 1
     "タブ、空白、改行の可視化
     set list
     set listchars=tab:>.,trail:_,extends:>,precedes:<,nbsp:%
-    "set listchars=tab:>.,trail:_,extends:>,precedes:<,nbsp:%
+    set listchars=tab:>.,trail:_,extends:>,precedes:<,nbsp:%
     "256色使えるようにする
     set t_Co=256
 
@@ -56,6 +58,31 @@ if 1
     highlight Pmenu     ctermbg=4
     highlight PmenuSel  ctermbg=1
     highlight PMenuSbar ctermbg=4
+
+    " 全角スペースをハイライト表示
+    function! ZenkakuSpace()
+        highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
+    endfunction
+
+    if has('syntax')
+        augroup ZenkakuSpace
+            autocmd!
+            autocmd ColorScheme       * call ZenkakuSpace()
+            autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+        augroup END
+        call ZenkakuSpace()
+    endif
+
+    " 文字コードの設定
+    set encoding=utf-8
+    set fileencodings=utf-8,cp932,euc-jp,sjis
+    set fileencodings=utf-8,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932
+    " set ff=unix
+    " ステータスラインの表示
+    set statusline=%f%=[%{(&fenc!=''?&fenc:&enc)}][%{&ff}]
+
+    " 改行コードCRLFがわかるように無理やり^Mを表示する
+    autocmd BufNewFile,BufRead *.php edit ++ff=unix
 
     "-------------------------------------------------
     " neocomplcache設定
@@ -94,39 +121,26 @@ if 1
         set conceallevel=2 concealcursor=i
     endif
 
-    " 全角スペースをハイライト表示
-    function! ZenkakuSpace()
-        highlight ZenkakuSpace cterm=reverse ctermfg=DarkMagenta gui=reverse guifg=DarkMagenta
-    endfunction
-
-    if has('syntax')
-        augroup ZenkakuSpace
-            autocmd!
-            autocmd ColorScheme       * call ZenkakuSpace()
-            autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
-        augroup END
-        call ZenkakuSpace()
-    endif
-
-    nnoremap <silent><C-e> :NERDTree<CR>
-
     " キーマップ
     " Ctl + cでスペニットの補完ウィンドウを閉じる
     inoremap <expr><C-c> neocomplcache#smart_close_popup()."\<C-c>"
     " Ctl + wでスペニットの補完ウィンドを閉じて保存
     inoremap <expr><C-w> neocomplcache#smart_close_popup()."<Esc>:w<CR>\<C-w>"
-    " スペース + wで保存
-    nnoremap <silent> <Space>w :<C-u>update<CR>
-    " imap <C-q> <Esc>:q<CR>
 
+    "-------------------------------------------------
+    " netrw設定
+    " ファイルツリー
+    "-------------------------------------------------
 
-    " 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
-    " 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
-    NeoBundleCheck
-    set encoding=utf-8
-    set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
-    set ff=unix
-    "-------------------------
-    " End Neobundle Settings.
-    "-------------------------
+    " ツリー表示スタイル
+    let g:netrw_liststyle = 3
+
+    " 起動時にツリー表示
+    autocmd VimEnter * Lex | vertical resize 40 | winc l
+
+    " ツリー表示キーマップ
+    inoremap <C-s> <Esc>:Lex<CR>:vertical resize 40<CR>
+    nnoremap <C-s> <Esc>:Lex<CR>:vertical resize 40<CR>
+    " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 endif

@@ -1,0 +1,16 @@
+# bash or sh
+
+# git関連
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+fi
+
+if [ -f ~/.git-prompt.sh ]; then
+    source ~/.git-prompt.sh
+fi
+
+PS1='[\u@\h \W]$(__git_ps1 "\e[1;31m(%s)\e[00m")\$ '
+
+# User specific aliases and functions
+# alias grep='grep --color=auto --include=*.html --include=*.php --include=*.inc --include=*.js --include=*.scss --include=*.sh'
+
