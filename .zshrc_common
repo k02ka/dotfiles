@@ -1,7 +1,11 @@
 # gitコマンド補完設定
-fpath=(~/.zsh $fpath)
-zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
-autoload -Uz compinit && compinit
+if [ -f ~/.zsh/_git ]; then
+    fpath=(~/.zsh $fpath)
+fi
+
+if [ -f ~/.git-completion.bash ]; then
+    zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
+fi
 
 # git-prompt設定
 if [ -f ~/.git-prompt.sh ]; then
@@ -12,4 +16,6 @@ setopt PROMPT_SUBST ; PS1='[%n@%m %c]$(__git_ps1 "\e[31m(%s)\e[00m")\$ '
 
 # User specific aliases and functions
 # alias grep='grep --color=auto --include=*.html --include=*.php --include=*.inc --include=*.js --include=*.scss --include=*.sh'
+
+autoload -Uz compinit && compinit
 
